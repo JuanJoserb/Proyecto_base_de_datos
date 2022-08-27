@@ -1,0 +1,215 @@
+/* Nombre: Juan Jose Romero Brito, Matricula: 21-EIIN-1-113 Seccion: 0541 */
+
+USE [Taller_informatico_JJ]
+GO
+/****** Object:  Table [dbo].[Tabla_de_clientes]    Script Date: 8/26/2022 10:05:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_de_clientes](
+	[Codigo_del_cliente] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NOT NULL,
+	[Direccion] [varchar](100) NOT NULL,
+	[Telefono] [char](12) NOT NULL,
+	[Modelo_del_vehiculo] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Codigo_del_cliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tabla_de_empleados]    Script Date: 8/26/2022 10:05:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_de_empleados](
+	[Nombre] [varchar](50) NOT NULL,
+	[Apellidos] [varchar](60) NOT NULL,
+	[Cedula] [varchar](13) NOT NULL,
+	[Edad] [int] NULL,
+	[Telefono] [char](12) NOT NULL,
+	[Codigo_de_empleado] [int] IDENTITY(1,1) NOT NULL,
+	[Sexo] [char](1) NOT NULL,
+	[Posicion] [varchar](60) NOT NULL,
+	[Fecha_de_nacimiento] [varchar](25) NULL,
+	[Tiempo_en_servicio] [varchar](25) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Codigo_de_empleado] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tabla_de_garantias]    Script Date: 8/26/2022 10:05:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_de_garantias](
+	[Codigo_de_garantia] [int] IDENTITY(1,1) NOT NULL,
+	[Codigo_del_cliente] [int] NOT NULL,
+	[Codigo_del_empleado] [int] NOT NULL,
+	[Codigo_de_servicio] [int] NOT NULL,
+	[Codigo_de_pieza] [int] NOT NULL,
+	[Problematica] [varchar](85) NOT NULL,
+	[Cantidad] [int] NOT NULL,
+	[Fecha_de_compra] [nchar](12) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Codigo_de_garantia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tabla_de_piezas]    Script Date: 8/26/2022 10:05:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_de_piezas](
+	[Codigo_de_pieza] [int] NOT NULL,
+	[Producto] [varchar](200) NOT NULL,
+	[Cantidad_en_existencia] [int] NOT NULL,
+	[Valor] [money] NOT NULL,
+	[Sucursal] [varchar](15) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Codigo_de_pieza] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tabla_de_servicio]    Script Date: 8/26/2022 10:05:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_de_servicio](
+	[Codigo_de_servicio] [int] IDENTITY(1,1) NOT NULL,
+	[Codigo_del_empleado] [int] NOT NULL,
+	[Codigo_del_cliente] [int] NOT NULL,
+	[Trabajo_realizado] [varchar](25) NOT NULL,
+	[Chasis_del_vehiculo] [varchar](200) NOT NULL,
+	[Codigo_de_pieza] [int] NOT NULL,
+	[Fecha_de_servicio] [varchar](25) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Codigo_de_servicio] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_clientes] ON 
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (1, N'Loida del Suarez', N'Higuey', N'809-277-9703', N'volkswagen tiguan')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (2, N'Azahar Albero Blanch', N'Bella Vista', N'809-117-2954', N'Hyundai Tucson')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (3, N'Alcides Castilla Roma', N'Santiago', N'829-030-5167', N'toyota Corolla')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (4, N'Martín Tomas Andres', N'Cotui', N'829-049-7300', N'Kia Sportage')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (5, N'Olga Fernandez', N' La Vega', N'829-509-1516', N'Suzuki Swift')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (6, N'Beatriz Mariscal', N'Las Terrenas', N'809-866-4492', N'Chevrolet Camaro')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (7, N'Mauricio Moronta ', N'Monte Plata', N'829-755-3013', N'Nissan Qashqai')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (8, N'Marino Palacios', N'Santo Domingo', N'849-488-4699', N'Ford Bronco')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (9, N'Selena Cid', N'Santiago', N'849-247-3994', N'Honda Civic')
+GO
+INSERT [dbo].[Tabla_de_clientes] ([Codigo_del_cliente], [Nombre], [Direccion], [Telefono], [Modelo_del_vehiculo]) VALUES (10, N'Pedro Rodriguez', N'Santo Domingo', N'809-558-6832', N'Mercedes Gle')
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_clientes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_empleados] ON 
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Nelson', N'Parra ', N'4852913760  ', 22, N'-4181       ', 1, N'M', N'Tecnico', N'02/02/2000', N'3 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Luis ', N'Duran ', N'4548813502  ', 33, N'-122        ', 2, N'M', N'Maestro Tecnico', N'01/01/1989', N'2 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Guillermo ', N'Garcia ', N'4592844616  ', 30, N'-2857       ', 3, N'M', N'Tecnico', N'25/03/1992', N'3 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Angel  ', N'Medina ', N'4715189364  ', 28, N'-6769       ', 4, N'M', N'Tecnico', N'02/08/1994', N'4 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Nelson', N'Martinez ', N'4844265744  ', 32, N'-1992       ', 5, N'M', N'Tecnico', N'20/05/1990', N'3 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Juan  ', N'Cruz ', N'4602763370  ', 34, N'-2625       ', 6, N'M', N'Maestro Tecnico', N'30/12/1987', N'8 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Julio ', N'de La Cruz ', N'4857945619  ', 26, N'-5092       ', 7, N'M', N'Tecnico', N'02/02/1996', N'2 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Victor ', N'Bautista ', N'4544883177  ', 31, N'-9099       ', 8, N'M', N'Tecnico', N'31/07/1991', N'4 años')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Ramon ', N'Gonzalez ', N'4847251737  ', 21, N'-8567       ', 9, N'M', N'Aprendiz Tecnico', N'26/06/2001', N'1 año')
+GO
+INSERT [dbo].[Tabla_de_empleados] ([Nombre], [Apellidos], [Cedula], [Edad], [Telefono], [Codigo_de_empleado], [Sexo], [Posicion], [Fecha_de_nacimiento], [Tiempo_en_servicio]) VALUES (N'Cesar ', N'Ramos ', N'4423654796  ', 35, N'-6022       ', 10, N'M', N'Maestro Tecnico', N'05/12/1986', N'10 años')
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_empleados] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_garantias] ON 
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (1, 8, 4, 1, 1, N' Frenos chillan', 4, N'5-7-22      ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (3, 5, 5, 5, 10, N' Vehiculo desnivelado', 2, N'04-03-22    ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (4, 9, 10, 9, 5, N' Fuga de aceite', 1, N'08-03-22    ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (5, 8, 4, 6, 3, N' Aceite incorrecto', 6, N'04-07-22    ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (6, 3, 7, 7, 2, N' Frenos chillan', 4, N'04-09-22    ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (7, 4, 6, 13, 8, N' Menor caudal de aire acondicionado', 1, N'02-07-22    ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (8, 10, 1, 4, 7, N' Bombillo quemado', 2, N'05-3-22     ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (9, 1, 9, 8, 6, N' Ralentí irregular', 1, N'08-05-22    ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (10, 2, 8, 2, 4, N' Dificultad a la hora de arrancar', 6, N'10-8-22     ')
+GO
+INSERT [dbo].[Tabla_de_garantias] ([Codigo_de_garantia], [Codigo_del_cliente], [Codigo_del_empleado], [Codigo_de_servicio], [Codigo_de_pieza], [Problematica], [Cantidad], [Fecha_de_compra]) VALUES (11, 6, 3, 3, 9, N' Vibracion del pedal de freno', 4, N'06-02-22    ')
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_garantias] OFF
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (1, N'Frenos delanteros', 100, 500.0000, N'Santo Domingo')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (2, N'Frenos traseros', 75, 450.0000, N'Santo Domingo')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (3, N'Aceite 1L', 700, 250.0000, N'Santo Domingo')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (4, N'Bujias', 25, 130.0000, N'Santiago')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (5, N'Filtro de aceite', 50, 250.0000, N'Santo Domingo')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (6, N'Filtro de aire', 83, 500.0000, N'Santo Domingo')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (7, N'Bombillos', 10, 500.0000, N'Santo Domingo')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (8, N'filtro de cabina', 25, 450.0000, N'Santiago')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (9, N'Discos de freno', 8, 500.0000, N'Santiago')
+GO
+INSERT [dbo].[Tabla_de_piezas] ([Codigo_de_pieza], [Producto], [Cantidad_en_existencia], [Valor], [Sucursal]) VALUES (10, N'Amortiguadores', 13, 900.0000, N'Santiago')
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_servicio] ON 
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (1, 2, 4, N'Cambio de frenos', N'4VWERJ49MOKS19824', 1, N'10-8-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (2, 8, 3, N'Cambio de Bujias', N'8694GRZ3321MKSA87', 4, N'04-07-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (3, 3, 2, N'Cambio de Discos de freno', N'4VWERJ49MOKS19824', 9, N'04-09-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (4, 1, 6, N'Cambio de bombillo', N'7826JFX23123KS873', 7, N'08-05-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (5, 5, 10, N'Cambio de Amortiguadores', N'0422IUSD311S2832', 10, N'04-03-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (6, 4, 7, N'Mantenimiento', N'2571YKLU38294', 3, N'02-07-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (7, 7, 1, N'Cambio de frenos traseros', N'0383OWMDS372938', 2, N'08-09-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (8, 9, 5, N'Cambio de filtro de aire', N'137SAD432433MYQ', 6, N'08-03-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (9, 10, 7, N'Mantenimiento', N'9328PJASA323556', 5, N'05-3-22')
+GO
+INSERT [dbo].[Tabla_de_servicio] ([Codigo_de_servicio], [Codigo_del_empleado], [Codigo_del_cliente], [Trabajo_realizado], [Chasis_del_vehiculo], [Codigo_de_pieza], [Fecha_de_servicio]) VALUES (13, 6, 9, N'Cambio de filtro decabina', N'3510NALKI83234', 8, N'06-02-22')
+GO
+SET IDENTITY_INSERT [dbo].[Tabla_de_servicio] OFF
+GO
